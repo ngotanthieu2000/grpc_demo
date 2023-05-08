@@ -1,0 +1,52 @@
+syntax = "proto3";
+package product;
+option go_package = "grpc/";
+service  ProductService{
+    rpc GetProduct  (GetProductRequest) returns (GetProductResponse){}  
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse){}
+    rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse){}
+    rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse){}
+}
+message Empty{}
+message Product{
+    string ID = 1;
+    string Productname = 2;
+    float Price = 3;
+    int32 Quantity = 4;
+}
+message GetProductRequest{
+    // id product
+    string ID = 1;
+}
+message GetProductResponse{
+    // product detail infomation
+    Product Product = 1;
+}
+message CreateProductRequest{
+    // product detail
+    Product Product =1;
+}
+message CreateProductResponse{
+    // product detail
+    Product Product =1;
+}
+message UpdateProductRequest{
+    // id product
+    string ID = 1;
+    // product update detail
+    Product Product = 2;
+}
+message UpdateProductResponse{
+    // product  detail
+    Product Product = 1;
+}
+message DeleteProductRequest{
+    // id product
+    string ID = 1;
+    // product update detail
+    Product Product = 2;
+}
+message DeleteProductResponse{
+    // product  detail
+    Product Product = 1;
+}
